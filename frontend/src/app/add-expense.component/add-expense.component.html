@@ -1,0 +1,25 @@
+<h2>Add Expense</h2>
+<form (ngSubmit)="save()">
+    <div>
+        <label>Title</label>
+        <input [(ngModel)]="model.title" name="title" required />
+    </div>
+    <div>
+        <label>Amount</label>
+        <input type="text" [(ngModel)]="model.amount" name="amount" required />
+    </div>
+    <div>
+        <label>Category</label>
+        <input [(ngModel)]="model.cateogory" name="cateogory" />
+    </div>
+    <div>
+        <label>Date</label>
+        <input type="date" [(ngModel)]="model.date" name="date" />
+    </div>
+    <div>
+        <label>Notes</label>
+        <textarea [(ngModel)]="model.notes" name="notes"></textarea>
+    </div>
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+</form>

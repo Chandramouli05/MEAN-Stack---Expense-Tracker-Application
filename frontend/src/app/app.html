@@ -1,0 +1,9 @@
+<nav class="navbar">
+    <a routerLink="/">Home</a>
+    <a routerLink="/add">Add Expense</a>
+    <a routerLink="/list">Expenses ({{ expenseCount()}})</a>
+</nav>
+
+<main class="container">
+    <router-outlet></router-outlet>
+</main>

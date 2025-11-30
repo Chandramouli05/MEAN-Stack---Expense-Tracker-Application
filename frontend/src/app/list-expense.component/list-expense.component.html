@@ -1,0 +1,17 @@
+<h2>All Expenses</h2>
+<div *ngIf="store.loading()">Loading....</div>
+<div *ngIf="store.error()">{{ error() }}</div>
+<div *ngIf="!loading() && items().length === 0">No Expense Yet</div>
+<ul>
+    <li *ngFor="let item of items()">
+        <div>
+            <strong>{{item.title}}</strong> - ${{item.amount}}
+            <small>{{item.cateogory}} . {{ item.date | date: 'shortDate' }}</small>
+        </div>
+
+        <div>
+            <a [routerLink]="['/edit',item._id]">Edit</a>
+            <a (click)="delete(item._id)">Delete</a>
+        </div>
+    </li>
+</ul>

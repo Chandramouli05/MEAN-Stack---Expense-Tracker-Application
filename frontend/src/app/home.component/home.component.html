@@ -1,0 +1,24 @@
+<div *ngIf="store.loading()">
+    Loading expenses...
+</div>
+
+<div *ngIf="store.error()">
+    Error: {{ store.error() }}
+</div>
+
+<h2>Total Expenses: {{ store.totalCount() }}</h2>
+<h2>Total Amount: {{ store.totalAmount() }}</h2>
+
+<h3>Latest Expense:</h3>
+<div *ngIf="latest()">
+    <p>Title: {{ latest().title }}</p>
+    <p>Amount: {{ latest().amount }}</p>
+    <p>Category: {{ latest().cateogory}}</p>
+    <p>Date: {{ latest().date }}</p>
+</div>
+
+<ul>
+    <li *ngFor="let e of store.expenses()">
+        {{ e.title }} - {{ e.amount }} - {{e?.notes}}
+    </li>
+</ul>
