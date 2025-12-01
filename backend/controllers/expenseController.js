@@ -23,8 +23,8 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { title, amount, cateogry, date, notes } = req.body;
-    const createExpense = new Expense({ title, amount, cateogry, date, notes });
+    const { title, amount, cateogory, date, notes } = req.body;
+    const createExpense = new Expense({ title, amount, cateogory, date, notes });
     const saved = await createExpense.save();
     res.status(201).json(saved);
   } catch (err) {

@@ -2,16 +2,29 @@
 <div *ngIf="store.loading()">Loading....</div>
 <div *ngIf="store.error()">{{ error() }}</div>
 <div *ngIf="!loading() && items().length === 0">No Expense Yet</div>
-<ul>
-    <li *ngFor="let item of items()">
-        <div>
-            <strong>{{item.title}}</strong> - ${{item.amount}}
-            <small>{{item.cateogory}} . {{ item.date | date: 'shortDate' }}</small>
-        </div>
 
-        <div>
-            <a [routerLink]="['/edit',item._id]">Edit</a>
-            <a (click)="delete(item._id)">Delete</a>
+
+
+<div class="row  g-3 mb-4">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let e of items()">
+        <div class="card w-100 shadow-sm h-100 bg-light">
+
+            <div class="card-body d-flex gap-3 flex-column">
+                <h5 class="card-title">{{e.title}}</h5>
+             
+                <div class="card-items">
+                    <p><strong>Amount:</strong> {{ e.amount | currency:'INR' }}</p>
+                    <p><strong>Category:</strong> {{ e.cateogory }}</p>
+                    <p><strong>Date:</strong> {{ e.date | date:'mediumDate' }}</p>
+                    <p><strong>Notes:</strong> {{ e.notes }}</p>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-warning" [routerLink]="['/edit',e._id]">Edit</button>
+                    <button class="btn btn-danger" (click)="delete(e._id)">Delete</button>
+                </div>
+            </div>
+
+
         </div>
-    </li>
-</ul>
+    </div>
+</div>

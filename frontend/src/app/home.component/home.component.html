@@ -43,17 +43,18 @@
 
 <h3>Recent Expense</h3>
 <div class="row  g-3 mb-4">
-    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let e of store.expenses()  | slice:0:3">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let e of latestThree()">
         <div class="card w-100 shadow-sm h-100 bg-light">
 
             <div class="card-body d-flex gap-3 flex-column">
-                <h5 class="card-title">Expenses</h5>
+                <h5 class="card-title">{{e.title}}</h5>
 
                 <div class="card-items">
-                    <p><strong>Title:</strong> {{ e.title }}</p>
+                    
                     <p><strong>Amount:</strong> {{ e.amount | currency:'INR' }}</p>
                     <p><strong>Category:</strong> {{ e.cateogory }}</p>
                     <p><strong>Date:</strong> {{ e.date | date:'mediumDate' }}</p>
+                    <p><strong>Notes:</strong> {{ e.notes }}</p>
                 </div>
 
             </div>
@@ -78,7 +79,7 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let e of store.expenses(); let i=index">
+            <tr *ngFor="let e of latest(); let i=index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ e.title }}</td>
                 <td>{{ e?.notes }}</td>

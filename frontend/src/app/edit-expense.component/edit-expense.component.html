@@ -1,26 +1,40 @@
-    <h2>Edit Expense</h2>
-    <div *ngIf="!model">Loading...</div>
-    <form *ngIf="model" (ngSubmit)="save()">
-      <div>
-        <label>Title</label>
-        <input [(ngModel)]="model.title" name="title" required />
-      </div>
-      <div>
-        <label>Amount</label>
-        <input type="number" [(ngModel)]="model.amount" name="amount" required />
-      </div>
-      <div>
-        <label>Category</label>
-        <input [(ngModel)]="model.cateogory" name="category" />
-      </div>
-      <div>
-        <label>Date</label>
-        <input type="date" [(ngModel)]="model.date" name="date" />
-      </div>
-      <div>
-        <label>Notes</label>
-        <textarea [(ngModel)]="model.notes" name="notes"></textarea>
-      </div>
-      <button type="submit">Save</button>
-      <button type="button" (click)="cancel()">Cancel</button>
-    </form>
+<h2>Edit Expense</h2>
+<div *ngIf="!model">Loading...</div>
+<form *ngIf="model" (ngSubmit)="save()" class="card p-4">
+  <div>
+    <label>Title</label>
+    <input [(ngModel)]="model.title" name="title" class="form-control" required />
+  </div>
+  <div>
+    <label>Amount</label>
+    <input type="number" [(ngModel)]="model.amount" class="form-control" name="amount" required />
+  </div>
+  <div>
+    <label for="Category">Category</label>
+
+    <select class="form-control" [(ngModel)]="model.cateogory" id="exampleInputCategory" name="cateogory"
+      placeholder="Select the Category" required>
+      <option value="General">General</option>
+      <option value="Savings">Savings</option>
+      <option value="Account Transfer">Account Transfer</option>
+      <option value="Education">Education</option>
+      <option value="Food">Food</option>
+      <option value="entertainment">Entertainment</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <div>
+    <label>Date</label>
+    <input type="date" [(ngModel)]="model.date" class="form-control" name="date" />
+  </div>
+  <div>
+    <label>Notes</label>
+    <textarea [(ngModel)]="model.notes" class="form-control" name="notes"></textarea>
+  </div>
+
+  <div class="button-group">
+    <button class="btn btn-success" type="submit">Save</button>
+    <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+  </div>
+
+</form>

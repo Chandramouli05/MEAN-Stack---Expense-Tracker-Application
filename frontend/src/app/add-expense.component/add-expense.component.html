@@ -1,25 +1,56 @@
 <h2>Add Expense</h2>
-<form (ngSubmit)="save()">
-    <div>
-        <label>Title</label>
-        <input [(ngModel)]="model.title" name="title" required />
+<div class="alert alert-danger d-flex flex-row align-items-center justify-content-between" role="alert" *ngIf="error()">
+    <p class="m-0">Error: {{ errorMsg() }}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<form (ngSubmit)="save()" class="card p-4">
+
+    <div class="form-group">
+        <label for="exampleInputTitle">Title</label>
+        <input type="text" [(ngModel)]="model.title" class="form-control" name="title" id="exampleInputTitle"
+            aria-describedby="emailHelp" placeholder="Enter the title" required>
     </div>
-    <div>
-        <label>Amount</label>
-        <input type="text" [(ngModel)]="model.amount" name="amount" required />
+
+    <div class="form-group">
+        <label for="exampleInputAmount">Amount</label>
+        <input type="text" [(ngModel)]="model.amount" class="form-control" name="amount" id="exampleInputAmount"
+            aria-describedby="emailHelp" placeholder="Enter the amount" required>
     </div>
-    <div>
-        <label>Category</label>
-        <input [(ngModel)]="model.cateogory" name="cateogory" />
+
+
+    <div class="form-group">
+        <label for="Category">Category</label>
+
+        <select class="form-control" [(ngModel)]="model.cateogory" id="exampleInputCategory" name="cateogory"
+            placeholder="Select the Category" required>
+            <option value="General">General</option>
+            <option value="Savings">Savings</option>
+            <option value="Account Transfer">Account Transfer</option>
+            <option value="Education">Education</option>
+            <option value="Food">Food</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="other">Other</option>
+        </select>
     </div>
-    <div>
-        <label>Date</label>
-        <input type="date" [(ngModel)]="model.date" name="date" />
+
+
+    <div class="form-group">
+        <label for="exampleInputDate">Date</label>
+        <input type="date" [(ngModel)]="model.date" class="form-control" name="date" id="exampleInputDate"
+            aria-describedby="emailHelp" placeholder="Enter the date" aria-required="false">
     </div>
-    <div>
-        <label>Notes</label>
-        <textarea [(ngModel)]="model.notes" name="notes"></textarea>
+
+    <div class="form-group">
+        <label for="exampleInputNotes">Notes</label>
+        <textarea type="text" [(ngModel)]="model.notes" name="notes" class="form-control" id="exampleInputNotes"
+            aria-describedby="emailHelp" placeholder="Enter the Notes"></textarea>
     </div>
-    <button type="submit">Save</button>
-    <button type="button" (click)="cancel()">Cancel</button>
+
+
+    <div class="button-group d-flex flex-row gap-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+    </div>
 </form>

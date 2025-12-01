@@ -16,7 +16,9 @@ export class ExpenseStore {
   //computed
   totalCount = computed(() => this._expenses().length);
   totalAmount = computed(() => this._expenses().reduce((s, e) => s + Number(e.amount || 0), 0));
-  hightestAmount = computed(() => Math.max(...this._expenses().map((e) => Number(e.amount || 0)), 0));
+  hightestAmount = computed(() =>
+    Math.max(...this._expenses().map((e) => Number(e.amount || 0)), 0)
+  );
 
   // read-only getters
   get expenses() {
@@ -78,7 +80,19 @@ export class ExpenseStore {
     return this._expenses().find((e) => e._id === id) ?? null;
   }
 
-  latest() {
-    return this._expenses()[0] ?? null;
+  latest(){
+    return (
+      [...this._expenses()]
+      .sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  
+    )
+  }
+
+  latestThree(){
+    return (
+      [...this._expenses()]
+      .sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0,3)
+    )
   }
 }
