@@ -16,6 +16,7 @@ export class ExpenseStore {
   //computed
   totalCount = computed(() => this._expenses().length);
   totalAmount = computed(() => this._expenses().reduce((s, e) => s + Number(e.amount || 0), 0));
+  hightestAmount = computed(() => Math.max(...this._expenses().map((e) => Number(e.amount || 0)), 0));
 
   // read-only getters
   get expenses() {

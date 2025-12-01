@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   totalCount = computed(() => this.store.totalCount());
   totalAmount = computed(() => this.store.totalAmount());
   latest = computed(() => this.store.latest());
+  higestAmount = computed(() => this.store.hightestAmount());
 
   ngOnInit() {
     this.store.loadAll();
